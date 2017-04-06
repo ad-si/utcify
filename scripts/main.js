@@ -59,11 +59,4 @@ stringInput
     convertAndRender(event.srcElement.value)
   })
 
-// stringInput
-//   .addEventListener('change',  event => {
-//     event.preventDefault()
-//     convertAndRender(event.srcElement.value)
-//   })
-
-
 convertAndRender(stringInput.value)
