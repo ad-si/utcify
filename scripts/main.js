@@ -56,7 +56,7 @@ function convertAndRender (string) {
 stringInput
   .addEventListener('input',  event => {
     event.preventDefault()
-    convertAndRender(event.srcElement.value)
+    convertAndRender(event.target.value)
   })
 
 convertAndRender(stringInput.value)
