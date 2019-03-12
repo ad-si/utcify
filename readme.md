@@ -1,11 +1,16 @@
-# UTC Zone
+# UTCify
 
 Convert all kinds of date formats to UTC online.
 
-Check it out on: [utc.zone](http://utc.zone)
+Check it out on: [utcify.ad-si.com](https://utcify.ad-si.com)
 
 
-## Potential Supporters
+## Related
+
+- https://twitter.com/utcify - Converts times in tweets to UTC
+
+
+### People
 
 - Richard Conn Henry
     - Astrophysicist
@@ -35,5 +40,5 @@ Check it out on: [utc.zone](http://utc.zone)
 
 ## TODO
 
-- [ ] Make accessible via URL. E.g. utc.zone#november,2011
-- [ ] Copy to clipboard button or on enter
+- [ ] Make it accessible via URL (e.g. `utcify.ad-si.com#3%20november,2011`)
+- [ ] Add "copy to clipboard" button or copy on enter

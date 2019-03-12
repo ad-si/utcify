@@ -1,26 +1,27 @@
 extends partials/layout.pug
 
 block content
-  h1 UTC ZONE
+  h1 UTCify
   p Convert all date formats to UTC
-  
+
+  br
+
+  input#datetime-string(
+    type='text'
+    name='datetime-string'
+    value='5 March 2019, 03:26 PM EDT'
+  )
+
+  br
+
+  p#utc-output
+    | 2019-03-05T19:26:00.000Z
+
+  section#info
+
+  hr
+
   small
     | By
     = ' '
     a(href='https://adriansieber.com') Adrian Sieber
-    
-  br
-  
-  input#datetime-string(
-    type='text'
-    name='datetime-string'
-    placeholder='1. March 2017, 03:26 PM EDT'
-  )
-  
-  br
-  
-  p#utc-output 2017-03-01T19:26:00.000Z
-  
-  hr
-  
-  section#info

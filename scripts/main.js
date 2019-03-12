@@ -43,20 +43,17 @@ function convertAndRender (string) {
 
   const grid = fragments
     .map(frag => `
-      <span class="col1">${frag}</span>:
+      <span class="col1">${frag}:</span>
       <span class="col2">${infoData.start.knownValues[frag]}</span>
     `)
     .join('<br>')
-  infoContainer.innerHTML = `
-    <h2>Interpretation:</h2>
-    <p id='utc-info'>${grid}<p>
-  `
+  infoContainer.innerHTML = `<p id='utc-info'>${grid}<p>`
 }
 
 stringInput
   .addEventListener('input',  event => {
     event.preventDefault()
-    convertAndRender(event.target.value)
+    convertAndRender(event.srcElement.value)
   })
 
 convertAndRender(stringInput.value)

@@ -1,3 +1,5 @@
+primaryMuted = hsl(0, 0%, 40%)
+
 *
   margin 0
   padding 0
@@ -9,9 +11,8 @@ html
   height 100%
 
 body
-  background-color rgb(20, 20, 22)
-  // color rgb(80, 80, 80)
-  color rgb(180, 180, 180)
+  background-color hsl(0, 0%, 8%)
+  color hsl(0, 0%, 70%)
   height 100%
   text-align center
   font-size 30px
@@ -19,16 +20,20 @@ body
   padding-top 3em
 
 h1
-  // color rgb(30, 30, 30)
-  color rgb(220, 220, 220)
+  color hsl(0, 0%, 85%)
   font-family 'PT Mono'
-  font-size 5em
+  font-size 3em
   line-height 1
   margin-bottom 2rem
 
+hr
+  height 1px
+  width 20em
+  background-color primaryMuted
+  margin 1em auto
+
 small
   display inline-block
-  margin-bottom 3em
 
 #utc-output
   margin-bottom 1em
@@ -38,8 +43,7 @@ input[type=text]
   border-width 1px
   border-style solid
   border-radius 0.3em
-  // border-color rgb(80, 80, 80)
-  border-color rgb(180, 180, 180)
+  border-color primaryMuted
   color inherit
   display inline-block
   padding 0.5em 1em
@@ -61,8 +65,11 @@ input[type=text]
 
   .col1
     text-align: right
+    color primaryMuted
+
 
 small
+  color primaryMuted
   font-size: 0.5em
   a
     color inherit
