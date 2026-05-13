@@ -8,6 +8,36 @@ const infoContainer = document
   .getElementById('info')
 const copyButton = document
   .getElementById('copy-button')
+const shareButton = document
+  .getElementById('share-button')
+
+
+function readInputFromHash () {
+  const hash = window.location.hash.slice(1)
+  if (!hash) return ''
+  try {
+    return decodeURIComponent(hash)
+  }
+  catch (error) {
+    console.info(error)
+    return hash
+  }
+}
+
+function writeInputToHash (value) {
+  const encoded = value ? '#' + encodeURIComponent(value) : ''
+  const newUrl = window.location.pathname + window.location.search + encoded
+  window.history.replaceState(null, '', newUrl)
+}
+
+function flashButton (button, success) {
+  button.classList.remove('copied', 'failed')
+  button.classList.add(success ? 'copied' : 'failed')
+  clearTimeout(button._resetTimeout)
+  button._resetTimeout = setTimeout(() => {
+    button.classList.remove('copied', 'failed')
+  }, 1500)
+}
 
 
 function convertAndRender (string) {
@@ -73,27 +103,49 @@ function convertAndRender (string) {
 stringInput
   .addEventListener('input',  event => {
     event.preventDefault()
-    convertAndRender(event.srcElement.value)
+    const value = event.srcElement.value
+    writeInputToHash(value)
+    convertAndRender(value)
   })
 
-let copyResetTimeout
+window.addEventListener('hashchange', () => {
+  const fromHash = readInputFromHash()
+  if (fromHash && fromHash !== stringInput.value) {
+    stringInput.value = fromHash
+    convertAndRender(fromHash)
+  }
+})
+
 copyButton.addEventListener('click', async () => {
   const text = outputContainer.textContent
   if (!text) return
   try {
     await navigator.clipboard.writeText(text)
-    copyButton.classList.remove('failed')
-    copyButton.classList.add('copied')
+    flashButton(copyButton, true)
   }
   catch (error) {
     console.info(error)
-    copyButton.classList.remove('copied')
-    copyButton.classList.add('failed')
+    flashButton(copyButton, false)
   }
-  clearTimeout(copyResetTimeout)
-  copyResetTimeout = setTimeout(() => {
-    copyButton.classList.remove('copied', 'failed')
-  }, 1500)
 })
 
+shareButton.addEventListener('click', async () => {
+  writeInputToHash(stringInput.value)
+  try {
+    await navigator.clipboard.writeText(window.location.href)
+    flashButton(shareButton, true)
+  }
+  catch (error) {
+    console.info(error)
+    flashButton(shareButton, false)
+  }
+})
+
+const initialFromHash = readInputFromHash()
+if (initialFromHash) {
+  stringInput.value = initialFromHash
+}
+else {
+  writeInputToHash(stringInput.value)
+}
 convertAndRender(stringInput.value)

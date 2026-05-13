@@ -56,7 +56,8 @@ small a {
   margin: 0;
 }
 
-#copy-button {
+#copy-button,
+#share-button {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -72,21 +73,25 @@ small a {
   transition: color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }
 
-#copy-button:hover {
+#copy-button:hover,
+#share-button:hover {
   color: hsl(0, 0%, 90%);
   background-color: hsl(0, 0%, 15%);
 }
 
-#copy-button:active:not(.copied) {
+#copy-button:active:not(.copied),
+#share-button:active:not(.copied) {
   transform: scale(0.92);
 }
 
-#copy-button:focus-visible {
+#copy-button:focus-visible,
+#share-button:focus-visible {
   outline: 1px solid hsl(0, 0%, 55%);
   outline-offset: 2px;
 }
 
-#copy-button .icon {
+#copy-button .icon,
+#share-button .icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -96,25 +101,43 @@ small a {
   transition: opacity 0.18s ease, transform 0.18s ease;
 }
 
-#copy-button .icon-check {
+#copy-button .icon-check,
+#share-button .icon-check {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.6);
   color: hsl(140, 55%, 60%);
 }
 
-#copy-button.copied {
+#copy-button.copied,
+#share-button.copied {
   color: hsl(140, 55%, 60%);
   background-color: hsla(140, 50%, 40%, 0.12);
 }
 
-#copy-button.copied .icon-copy {
+#copy-button.copied .icon-copy,
+#share-button.copied .icon-share {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.6);
 }
 
-#copy-button.copied .icon-check {
+#copy-button.copied .icon-check,
+#share-button.copied .icon-check {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
+}
+
+#datetime-input-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 20em;
+  max-width: 80%;
+  margin-bottom: 2em;
+}
+
+#datetime-input-wrapper #share-button {
+  position: absolute;
+  left: 100%;
+  top: calc(50% - 0.7em);
 }
 
 input[type=text] {
@@ -122,12 +145,10 @@ input[type=text] {
   border: 1px solid hsl(0, 0%, 40%);
   border-radius: 0.3em;
   color: inherit;
-  display: inline-block;
+  display: block;
   padding: 0.5em 1em;
   text-align: center;
-  width: 20em;
-  max-width: 80%;
-  margin-bottom: 2em;
+  width: 100%;
 }
 
 #info {
