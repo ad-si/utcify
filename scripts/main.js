@@ -14,6 +14,25 @@ function convertAndRender (string) {
   let infoData = ''
   let fragments = []
 
+  const trimmed = string.trim()
+  const unixTimeShort = /^[0-9]{10}$/
+  const unixTimeMedium = /^[0-9]{13}$/
+  const unixTimeLong = /^[0-9]{16}$/
+
+  let normalized = trimmed
+  if (unixTimeShort.test(normalized)) {
+    normalized += '000'
+  }
+  if (unixTimeLong.test(normalized)) {
+    normalized = normalized.slice(0, -3)
+  }
+
+  if (unixTimeMedium.test(normalized)) {
+    outputContainer.textContent = new Date(Number(normalized)).toISOString()
+    infoContainer.innerHTML = ''
+    return
+  }
+
   try {
     output = chrono
       .parseDate(string)
