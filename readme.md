@@ -41,4 +41,3 @@ Check it out on: [utcify.ad-si.com](https://utcify.ad-si.com)
 ## TODO
 
 - [ ] Make it accessible via URL (e.g. `utcify.ad-si.com#3%20november,2011`)
-- [ ] Add "copy to clipboard" button or copy on enter

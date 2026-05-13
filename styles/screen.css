@@ -45,8 +45,76 @@ small a {
   color: inherit;
 }
 
-#utc-output {
+#utc-output-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
   margin-bottom: 1em;
+}
+
+#utc-output {
+  margin: 0;
+}
+
+#copy-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4em;
+  height: 1.4em;
+  background: transparent;
+  border: 0;
+  border-radius: 0.25em;
+  color: hsl(0, 0%, 45%);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+
+#copy-button:hover {
+  color: hsl(0, 0%, 90%);
+  background-color: hsl(0, 0%, 15%);
+}
+
+#copy-button:active:not(.copied) {
+  transform: scale(0.92);
+}
+
+#copy-button:focus-visible {
+  outline: 1px solid hsl(0, 0%, 55%);
+  outline-offset: 2px;
+}
+
+#copy-button .icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.7em;
+  height: 0.7em;
+  transform: translate(-50%, -50%) scale(1);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+#copy-button .icon-check {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  color: hsl(140, 55%, 60%);
+}
+
+#copy-button.copied {
+  color: hsl(140, 55%, 60%);
+  background-color: hsla(140, 50%, 40%, 0.12);
+}
+
+#copy-button.copied .icon-copy {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+}
+
+#copy-button.copied .icon-check {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 input[type=text] {

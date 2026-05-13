@@ -6,6 +6,8 @@ const outputContainer = document
   .getElementById('utc-output')
 const infoContainer = document
   .getElementById('info')
+const copyButton = document
+  .getElementById('copy-button')
 
 
 function convertAndRender (string) {
@@ -73,5 +75,25 @@ stringInput
     event.preventDefault()
     convertAndRender(event.srcElement.value)
   })
+
+let copyResetTimeout
+copyButton.addEventListener('click', async () => {
+  const text = outputContainer.textContent
+  if (!text) return
+  try {
+    await navigator.clipboard.writeText(text)
+    copyButton.classList.remove('failed')
+    copyButton.classList.add('copied')
+  }
+  catch (error) {
+    console.info(error)
+    copyButton.classList.remove('copied')
+    copyButton.classList.add('failed')
+  }
+  clearTimeout(copyResetTimeout)
+  copyResetTimeout = setTimeout(() => {
+    copyButton.classList.remove('copied', 'failed')
+  }, 1500)
+})
 
 convertAndRender(stringInput.value)
