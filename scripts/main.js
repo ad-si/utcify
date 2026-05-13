@@ -1,5 +1,4 @@
-// const chrono = require('chrono')
-/* globals chrono */
+import * as chrono from 'https://cdn.jsdelivr.net/npm/chrono-node@2.9.1/+esm'
 
 const stringInput = document
   .getElementById('datetime-string')
@@ -63,7 +62,7 @@ function convertAndRender (string) {
   const grid = fragments
     .map(frag => `
       <span class="col1">${frag}:</span>
-      <span class="col2">${infoData.start.knownValues[frag]}</span>
+      <span class="col2">${infoData.start.get(frag)}</span>
     `)
     .join('<br>')
   infoContainer.innerHTML = `<p id='utc-info'>${grid}<p>`
